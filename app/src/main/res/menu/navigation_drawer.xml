@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/recipes"
+        android:icon="@drawable/recipe_book"
+        android:title="Tarifler"/>
+
+    <item
+        android:id="@+id/shop_list"
+        android:icon="@drawable/shopping_list"
+        android:title="Market Listesi"/>
+
+    <item
+        android:id="@+id/guest_planner"
+        android:icon="@drawable/guest_planner"
+        android:title="Misafir Planlayıcı"/>
+
+    <item
+        android:id="@+id/game_forwho"
+        android:icon="@drawable/lottery"
+        android:title="Sıra Kimde?"/>
+
+    <item
+        android:id="@+id/material_tracking"
+        android:icon="@drawable/chart"
+        android:title="Malzeme Takibi"/>
+
+    <item android:id="@+id/divider" android:title="">
+        <menu>
+            <item android:id="@+id/settings"
+                android:icon="@drawable/settings"
+                android:title="Ayarlar"/>
+            <item android:id="@+id/log_out"
+                android:icon="@drawable/logout"
+                android:title="Çıkış Yap"/>
+        </menu>
+    </item>
+
+</menu>
