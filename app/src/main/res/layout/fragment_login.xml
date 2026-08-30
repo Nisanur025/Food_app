@@ -12,7 +12,7 @@
         android:id="@+id/badgeContainer"
         android:layout_width="74dp"
         android:layout_height="74dp"
-        android:background="@drawable/frame_cooking"
+        android:background="@drawable/bg_frame_cooking"
         android:layout_gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/chef_hat" />
+            android:src="@drawable/ic_chef_hat" />
 
     </FrameLayout>
 
@@ -84,8 +84,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bottomWelcome"
-        android:background="@drawable/bg_btn_et"
-        android:drawableStart="@drawable/mail"
+        android:background="@drawable/bg_square_black_stroke"
+        android:drawableStart="@drawable/ic_mail"
         android:drawablePadding="10dp"
         />
 
@@ -120,9 +120,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_password"
-        android:background="@drawable/bg_btn_et"
-        android:drawableStart="@drawable/lock"
-        android:drawableEnd="@drawable/eye_open"
+        android:background="@drawable/bg_square_black_stroke"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawableEnd="@drawable/ic_eye_open"
         android:drawablePadding="10dp"/>
     <TextView
         android:id="@+id/forgot_pw"
@@ -153,7 +153,7 @@
         android:text="Giriş Yap"
         android:textSize="20sp"
         android:textColor="#E05C5C"
-        android:background="@drawable/login_btn_bg"
+        android:background="@drawable/bg_square_pink"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -214,8 +214,8 @@
             android:layout_marginEnd="20dp"
             android:text="Google"
             app:backgroundTint="@null"
-            android:background="@drawable/bg_btn_et"
-            app:icon="@drawable/google">
+            android:background="@drawable/bg_square_black_stroke"
+            app:icon="@drawable/ic_google">
 
         </Button>
         <Button
@@ -226,8 +226,8 @@
             android:layout_weight="1"
             android:text="Apple"
             app:backgroundTint="@null"
-            android:background="@drawable/bg_btn_et"
-            app:icon="@drawable/apple"
+            android:background="@drawable/bg_square_black_stroke"
+            app:icon="@drawable/ic_apple"
             >
 
         </Button>
