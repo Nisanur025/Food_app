@@ -143,7 +143,7 @@
     </TextView>
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -169,7 +169,7 @@
         android:background="#86CCCCCC"
         app:layout_constraintEnd_toStartOf="@+id/tvOr"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
     <!-- Ortadaki Yazı -->
     <TextView
@@ -196,7 +196,7 @@
         android:background="#86CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvOr"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 
 
     <LinearLayout

@@ -26,7 +26,6 @@ class RecipeAdapter(
 
         with(holder.binding) {
             recipeTitle.text = recipe.title
-            // NOT: rv_home_page.xml içindeki TextView ve ImageView ID'lerinin
             time.text = "${recipe.duration} | ${recipe.difficulty}"
             imgRecipe.setBackgroundResource(recipe.imageResId)
 

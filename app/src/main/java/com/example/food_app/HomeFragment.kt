@@ -1,6 +1,7 @@
 package com.example.food_app
 
 import RecipeAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.food_app.databinding.FragmentHomeBinding
+import com.google.android.material.card.MaterialCardView
 
 /**
  * A simple [Fragment] subclass.
@@ -54,10 +56,30 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+
+
+        // Card view Tüm Tarifler
+        val cardView_recipes= view.findViewById<MaterialCardView>(R.id.all_recipes_mc)
+
+        cardView_recipes.setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, AllRecipesFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+
+
+
+
+
+
     }
 
+
+    //Recyler View
     private fun setupRecyclerView() {
-        // Örnek veri listen
+        // Örnek veri listesi
         val recipeList = listOf(
             easy_recipeModel("Avakadolu Tost", "10 dk", "Kolay", R.drawable.bg_square_green),
             easy_recipeModel("Peynirli Omelet", "15 dk", "Orta", R.drawable.bg_square_purple),
@@ -68,7 +90,7 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "${selectedRecipe.title} seçildi", Toast.LENGTH_SHORT).show()
         }
 
-        binding.recyclerViewRecipes.apply { // XML'indeki RecyclerView ID'si "recyclerView" ise
+        binding.recyclerViewRecipes.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = recipeAdapter
         }
