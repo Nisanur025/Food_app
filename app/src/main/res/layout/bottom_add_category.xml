@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#191919">
+    <View
+        android:id="@+id/viewHandle_category"
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="#5A5A5A"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        />
+    <TextView
+        android:id="@+id/title_newCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yeni Kategori Aç"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewHandle_category"/>
+
+    <TextView
+        android:id="@+id/category_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_newCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="12dp"
+        android:layout_marginHorizontal="24dp"
+        android:textSize="17sp"
+        android:textColor="@color/light_grey"
+        android:text="Listende kendi başlığını oluştur, örneğin: 'Kahvaltılık' ya da 'Temizlik'.  "/>
+
+    <EditText
+        android:id="@+id/et_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category_description"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:background="@drawable/et_bg_green"
+        android:hint="Kategori adını girin..."
+        android:textColorHint="@color/light_grey"
+        />
+
+    <TextView
+        android:id="@+id/tv_pick_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_category"
+        android:layout_marginVertical="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:textSize="17sp"
+        android:textColor="@color/light_grey"
+        android:text="Ya da hazır bir kategori seç"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_vegetable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sebze ve meyve"
+        android:textSize="14sp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_carrot"
+        android:background="@drawable/bg_square_black_stroke"
+        app:iconTint="#008000"
+        app:iconSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_pick_category"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_meat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Et ve şarküteri"
+        android:textSize="14sp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_meat"
+        android:background="@drawable/bg_square_black_stroke"
+        app:iconTint="#FF0000"
+        app:iconSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/btn_vegetable"
+        app:layout_constraintTop_toBottomOf="@id/tv_pick_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_drink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="İçecek"
+        android:textSize="14sp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_drink"
+        android:background="@drawable/bg_square_black_stroke"
+        app:iconTint="#FF5722FF"
+        app:iconSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_vegetable"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_clean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temizlik"
+        android:textSize="14sp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_clean"
+        android:background="@drawable/bg_square_black_stroke"
+        app:iconTint="#FFFF00"
+        app:iconSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/btn_drink"
+        app:layout_constraintTop_toBottomOf="@id/btn_vegetable"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_baby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bebek"
+        android:textSize="14sp"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_baby"
+        android:background="@drawable/bg_square_black_stroke"
+        app:iconTint="#FFC0CB"
+        app:iconSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_drink"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/btn_cancel_category"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@null"
+        android:background="@drawable/bg_square_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_baby"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:text="Vazgeç"/>
+
+    <Button
+        android:id="@+id/btn_save_category"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@null"
+        android:background="@drawable/bg_square_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_cancel_category"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_baby"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:text="Kategoriyi Oluştur" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
