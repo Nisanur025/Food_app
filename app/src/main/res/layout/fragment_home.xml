@@ -244,6 +244,7 @@
 
             <!-- 2. KART: Alışveriş Listesi -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_shop_list"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

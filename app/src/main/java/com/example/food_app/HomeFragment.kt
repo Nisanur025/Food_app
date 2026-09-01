@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
 
 
-        // Card view Tüm Tarifler
+        // Card view Tüm Tarifler sayfasına geçiş
         val cardView_recipes= view.findViewById<MaterialCardView>(R.id.all_recipes_mc)
 
         cardView_recipes.setOnClickListener{
@@ -69,6 +69,16 @@ class HomeFragment : Fragment() {
         }
 
 
+        // card view Alışveriş listesi Sayfasına geçiş
+
+        val cardView_shopList=view.findViewById<MaterialCardView>(R.id.btn_shop_list)
+
+        cardView_shopList.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, ShopListFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
 
 
