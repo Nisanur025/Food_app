@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RecipeDetailFragment"
+    android:contentDescription="scrollview"
+    android:background="@color/black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Resim-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_photo_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/title_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/rv_photo_gallery"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:layout_marginHorizontal="24dp">
+
+            <!--Başlık ve Açıklama-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mercimek Çorbası"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kırmızı mercimekle yapılan, kremamsı ve doyurucu klasik türk çorbası"
+
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <!--porsiyon ve butonlar-->
+        <LinearLayout
+            android:id="@+id/layout_servings_stepper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp"
+            app:layout_constraintTop_toBottomOf="@id/title_description"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_decrease_servings"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_minus_square"
+                app:tint="#6A6A6A"
+                android:contentDescription="eksi"/>
+
+            <TextView
+                android:id="@+id/tv_servings_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:textColor="@color/white"
+                android:text="4"
+                android:textSize="20sp"/>
+
+            <ImageButton
+                android:id="@+id/btn_increase_servings"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_plus_square"
+                app:tint="#6A6A6A"
+                android:contentDescription="artı"/>
+
+            <TextView
+                android:id="@+id/tv_serving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#939090"
+                android:text="porsiyon"
+                android:textSize="13sp"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Pişirmeye Başla"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_today_menu"
+                android:layout_marginEnd="24dp"/>
+        </LinearLayout>
+
+
+
+        <!--Malzeme Kartı-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="#48595959"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/layout_servings_stepper">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_ingredients_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Malzemeler"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <!-- Her satır: checkbox + miktar + malzeme adı -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                <!--
+                  ingredient_item.xml örneği:
+                  <LinearLayout orientation="horizontal" paddingVertical="6dp">
+                      <TextView id="tv_amount" textStyle="bold" width="80dp" text="1 cup"/>
+                      <TextView id="tv_name" text="kırmızı mercimek"/>
+                  </LinearLayout>
+                -->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Step Kartı-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_steps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="#48595959"
+            app:cardCornerRadius="12dp"
+
+            app:layout_constraintTop_toBottomOf="@id/card_ingredients">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Steps"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_steps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                <!--
+                  step_item.xml örneği:
+                  <LinearLayout orientation="horizontal">
+                      <TextView id="tv_step_number" background="@drawable/bg_circle_orange"
+                                width="24dp" height="24dp" gravity="center" text="1"/>
+                      <LinearLayout orientation="vertical" marginStart="12dp">
+                          <TextView id="tv_step_title" textStyle="bold"/>
+                          <TextView id="tv_step_body" textColor="@color/text_secondary"/>
+                      </LinearLayout>
+                  </LinearLayout>
+                -->
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Kişisel not kutusu-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="#48595959"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/card_steps"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Başlık satırı: ikon + "Notlarım" + kaydetme durumu -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_note"
+                        app:tint="#FF5722" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Notlarım"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <!-- Kaydetmeden önce gizli, yazarken görünür -->
+                    <TextView
+                        android:id="@+id/tv_save_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kaydedildi ✓"
+                        android:textColor="#808080"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!-- Kullanıcının kendi notunu yazdığı alan -->
+                <EditText
+                    android:id="@+id/et_personal_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:minLines="3"
+                    android:gravity="top|start"
+                    android:background="#4B5A5A5A"
+                    android:padding="12dp"
+                    android:hint="Kendi notunu ekle: nasıl uyarladın, ne değiştirdin, tekrar yaparken hatırlaman gerekenler..."
+                    android:textColorHint="@color/light_grey"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:imeOptions="actionDone" />
+
+                <!-- Yazarken görünür, boşken gizli -->
+                <Button
+                    android:id="@+id/btn_save_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="end"
+                    android:text="Notu kaydet"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_today_menu"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>
