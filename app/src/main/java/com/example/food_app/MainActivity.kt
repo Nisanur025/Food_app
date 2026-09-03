@@ -59,7 +59,11 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.flFragment, AllRecipesFragment())
                         .commit()
                 }
-                // Add cases for other menu items as needed
+                R.id.game_forwho ->{
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, WhoseTurnFragment())
+                    .commit()
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
