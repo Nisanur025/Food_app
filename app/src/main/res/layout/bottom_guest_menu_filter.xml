@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#191919"
+    android:maxHeight="700dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
+
+        <!-- Drag handle -->
+        <View
+            android:layout_width="36dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/light_grey" />
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="14dp">
+
+            <TextView
+                android:id="@+id/tvSheetTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kategori ve hazırlık seç"
+                android:textColor="#F2F2F0"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="4dp"
+                android:text="Sıfırla"
+                android:textColor="#8C8C92"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#2F2F35" />
+
+        <!-- Body -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="18dp">
+
+            <!-- Kategori bölümü -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Kategori"
+                android:textColor="#8C8C92"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleLine="false"
+                app:chipSpacingHorizontal="10dp"
+                app:chipSpacingVertical="10dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCorba"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Çorba"
+                    app:chipBackgroundColor="#296052"
+                    app:chipStrokeColor="#2F9E6E"
+                    app:chipStrokeWidth="1.5dp"
+                    app:checkedIconTint="#2F9E6E"
+                    android:textColor="#F2F2F0" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAnaYemek"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Ana yemek"
+                    app:chipBackgroundColor="#3D1F1F"
+                    app:chipStrokeColor="#E0523F"
+                    app:chipStrokeWidth="1.5dp"
+                    app:checkedIconTint="#E0523F"
+                    android:textColor="#F2F2F0" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTatli"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Tatlı"
+                    app:chipBackgroundColor="#906524"
+                    app:chipStrokeColor="#D99A3D"
+                    app:chipStrokeWidth="1.5dp"
+                    app:checkedIconTint="#D99A3D"
+                    android:textColor="#F2F2F0" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSalata"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="Salata"
+                    app:chipBackgroundColor="#295795"
+                    app:chipStrokeColor="#5A8FD6"
+                    app:chipStrokeWidth="1.5dp"
+                    app:checkedIconTint="#5A8FD6"
+                    android:textColor="#F2F2F0" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+            <!-- TODO: Kendi kategorini oluştur ilk başka görünür değil kullanıcı butona basınca görünür olsun -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginVertical="24dp"
+                android:layout_marginHorizontal="24dp">
+
+                <!-- Metin Giriş Kutusu -->
+                <EditText
+                    android:id="@+id/etYourCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_square_black_stroke"
+                    android:hint="Kendi kategorini oluştur."
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_grey"
+                    android:textSize="16sp" />
+
+                <!-- Gönder Butonu -->
+                <ImageButton
+                    android:id="@+id/btnSendCategory"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_green"
+                    android:src="@drawable/ic_send"
+                    android:contentDescription="Gönder"
+                    app:tint="#19382a" />
+
+            </LinearLayout>
+
+            <!-- Yeni kategori giriş kutusu (varsayılan gizli, tıklanınca gösterilir) -->
+            <LinearLayout
+                android:id="@+id/layoutNewCategoryComposer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:background="@color/card_bg"
+                android:padding="12dp"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    app:boxStrokeColor="#2F2F35"
+                    app:hintTextColor="#5C5C62">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNewCategoryName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Kategori adı yaz, örn. Mezeler"
+                        android:maxLength="20"
+                        android:textColor="#F2F2F0"
+                        android:textColorHint="#5C5C62" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCancelCategory"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:text="Vazgeç"
+                        android:textColor="#8C8C92"
+                        app:backgroundTint="#2A2A30" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnConfirmCategory"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:text="Ekle"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#A774D8" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Hazırlık süresi bölümü -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="12dp"
+                android:text="Hazırlık süresi"
+                android:textColor="#8C8C92"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupPrepTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rbHazir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/card_bg"
+                    android:buttonTint="#7FC4DD"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text="Hemen hazır"
+                    android:textColor="#F2F2F0"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb1Gun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/card_bg"
+
+                    android:buttonTint="#7FC4DD"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text="1 gün önceden hazır"
+                    android:textColor="#F2F2F0"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb2Gun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/card_bg"
+                    android:buttonTint="#7FC4DD"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text="2 gün önceden hazır"
+                    android:textColor="#F2F2F0"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb3GunUstu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/card_bg"
+                    android:buttonTint="#7FC4DD"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text="3+ gün önceden hazır"
+                    android:textColor="#F2F2F0"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+            <!-- Kullanıcının eklediği özel hazırlık süreleri runtime'da buraya eklenir -->
+            <RadioGroup
+                android:id="@+id/radioGroupCustomPrepTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <!-- Kendi süreni ekle -->
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginVertical="24dp"
+                android:layout_marginHorizontal="24dp">
+
+                <!-- Metin Giriş Kutusu -->
+                <EditText
+                    android:id="@+id/etYourTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_square_black_stroke"
+                    android:hint="Kendi süreni yaz."
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_grey"
+                    android:textSize="16sp" />
+
+                <!-- Gönder Butonu -->
+                <ImageButton
+                    android:id="@+id/btnSendTime"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_chip_green"
+                    android:src="@drawable/ic_send"
+                    android:contentDescription="Gönder"
+                    app:tint="#19382a" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#2F2F35" />
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/tvSelectedCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="0 kategori seçildi"
+                android:textColor="#5C5C62"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnApplyFilter"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Filtreyi uygula"
+                android:textColor="#141416"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="#F2F2F0"
+                app:cornerRadius="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

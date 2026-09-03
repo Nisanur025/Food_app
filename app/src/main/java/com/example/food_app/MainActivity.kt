@@ -5,11 +5,12 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.OnApplyWindowInsetsListener
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,24 +18,21 @@ class MainActivity : AppCompatActivity() {
         this.enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        val drawerLayout = findViewById<DrawerLayout>(R.id.menu_drawer)
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
 
-        ViewCompat.setOnApplyWindowInsetsListener(
-            findViewById<View?>(R.id.menu_drawer),
-            OnApplyWindowInsetsListener { v: View?, insets: WindowInsetsCompat? ->
-                val systemBars = insets!!.getInsets(WindowInsetsCompat.Type.systemBars())
-                v!!.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            })
-
+        ViewCompat.setOnApplyWindowInsetsListener(drawerLayout) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
+            supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment, HomeFragment())
                 .commit()
         }
-
-        val drawerLayout = findViewById<DrawerLayout>(R.id.menu_drawer)
-        val toolbar = findViewById<MaterialToolbar?>(R.id.toolbar)
 
         val toggle = ActionBarDrawerToggle(
             this,
@@ -45,9 +43,26 @@ class MainActivity : AppCompatActivity() {
         )
 
         drawerLayout.addDrawerListener(toggle)
-        toggle.syncState() // Hamburger ikonunu ve animasyonu bağla
+        toggle.syncState()
 
-        toggle.getDrawerArrowDrawable()
-            .setColor(getResources().getColor(android.R.color.white, getTheme()))
+        toggle.drawerArrowDrawable.color = resources.getColor(android.R.color.white, theme)
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.guest_planner -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, GuestFragment())
+                        .commit()
+                }
+                R.id.recipes -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, AllRecipesFragment())
+                        .commit()
+                }
+                // Add cases for other menu items as needed
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
     }
 }

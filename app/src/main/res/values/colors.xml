@@ -6,5 +6,10 @@
     <color name="card_bg">#2B2B2B</color>
     <color name="warning_bg">#452700</color>
     <color name="light_grey">#969393</color>
+    <color name="green">#479673</color>
+    <color name="dark_green">#154434</color>
+    <color name="red">#FF3B30</color>
+    <color name="orange">#FF9500</color>
+    <color name="blue">#204669</color>
 
 </resources>

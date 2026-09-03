@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.food_app.databinding.DialogFilterBinding
+import com.example.food_app.databinding.BottomDialogFilterBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FilterBottomSheetFragment : BottomSheetDialogFragment() {
 
-    private var _binding: DialogFilterBinding? = null
+    private var _binding: BottomDialogFilterBinding? = null
     private val binding get() = _binding!!
 
     // Filtre sonuçlarını ana Fragment'a bildirmek için callback
@@ -20,7 +20,7 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogFilterBinding.inflate(inflater, container, false)
+        _binding = BottomDialogFilterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
