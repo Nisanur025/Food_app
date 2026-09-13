@@ -23,7 +23,7 @@ class UserRepository(private val userDao: UserDAO) {
         data class Error(val message: String) : LoginResult()
     }
 
-    // NOT: "phone" parametresi kaldırıldı çünkü UserEntity'de böyle bir alan yok.
+
     suspend fun register(
         fullName: String,
         email: String,

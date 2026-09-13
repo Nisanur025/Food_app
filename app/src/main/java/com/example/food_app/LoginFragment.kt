@@ -6,26 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.food_app.data.repository.UserRepository
 import com.example.food_app.ui.auth.SignUpFragment
+import kotlinx.coroutines.launch
 
-/**
- * Giriş ekranı. "Kayıt Ol" linkine tıklanınca, aynı Activity içindeki
- * fragmentContainer'ı SignUpFragment ile değiştir
- */
 class LoginFragment : Fragment() {
-
-    private var mParam1: String? = null
-    private var mParam2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            mParam1 = requireArguments().getString(ARG_PARAM1)
-            mParam2 = requireArguments().getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,35 +28,99 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val mail_et = view.findViewById<EditText>(R.id.mail_et)
+        val password_et = view.findViewById<EditText>(R.id.password_et)
         val loginBtn = view.findViewById<Button>(R.id.login_btn)
+        val registerBtn = view.findViewById<TextView>(R.id.btnRegister)
+
+        val db = AppDatabase.getInstance(requireContext())
+        val repository = UserRepository(db.userDao())
+
+        // 1. GİRİŞ YAP (LOGIN) BUTONU
         loginBtn.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
+            val mail = mail_et.text.toString().trim()
+            val password = password_et.text.toString().trim()
+
+            if (mail.isEmpty() || password.isEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Hata: E-posta veya şifre boş bırakılamaz",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                lifecycleScope.launch {
+                    val result = repository.login(email = mail, password = password)
+
+                    when (result) {
+                        is UserRepository.LoginResult.Success -> {
+                            Toast.makeText(requireContext(), "Giriş Başarılı!", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            startActivity(intent)
+                            requireActivity().finish() // Giriş sonrası login ekranını kapatır
+                        }
+                        is UserRepository.LoginResult.InvalidCredentials -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Hata: E-posta veya şifre yanlış!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is UserRepository.LoginResult.Error -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Hata: ${result.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
         }
 
-        // DÜZELTME: startActivity(Intent(..., SignUpFragment::class.java)) ÇALIŞMAZ
-        // çünkü SignUpFragment bir Activity değil, bir Fragment.
-        // Bunun yerine aynı Activity içindeki fragmentContainer'ı değiştiriyoruz.
-        val registerBtn = view.findViewById<TextView>(R.id.btnRegister)
+        // 2. KAYIT OL (REGISTER) BUTONU
         registerBtn.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, SignUpFragment())
                 .addToBackStack(null)
                 .commit()
         }
-    }
 
-    companion object {
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
+        // 3. Şifre Açık mı Kapalı mı
+        // Şifrenin şu an açık mı kapalı mı olduğunu takip etmek için değişken
+             var isPasswordVisible = false
 
-        fun newInstance(param1: String?, param2: String?): LoginFragment {
-            val fragment = LoginFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
+            val password = view.findViewById<EditText>(R.id.password_et)
+            val togglePasswordIv = view.findViewById<ImageView>(R.id.togglePasswordIv)
+
+            togglePasswordIv.setOnClickListener {
+                isPasswordVisible = !isPasswordVisible
+
+                if (isPasswordVisible) {
+                    // Şifreyi GÖRÜNÜR yap
+                    password.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                            android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                    // İkonu ic_eye_open ile değiştir
+                    togglePasswordIv.setImageResource(R.drawable.ic_eye_open)
+                } else {
+                    // Şifreyi GİZLİ yap
+                    password.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                            android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                    // İkonu ic_eye_close ile değiştir
+                    togglePasswordIv.setImageResource(R.drawable.ic_eye_hide)
+                }
+
+                // İmleci (cursor) metnin en sonuna taşı
+                password.setSelection(password.text.length)
+            }
+
+        // 4. Şifremi unuttum BUTONU
+        val forgot_psw = view.findViewById<TextView>(R.id.forgot_pw)
+        forgot_psw.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, ForgotPasswordFragment())
+                .addToBackStack(null)
+                .commit()
         }
+
     }
 }
