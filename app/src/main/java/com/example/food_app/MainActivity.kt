@@ -47,11 +47,18 @@ class MainActivity : AppCompatActivity() {
 
         toggle.drawerArrowDrawable.color = resources.getColor(android.R.color.white, theme)
 
+        // Navigation Drawer ile fragment yönlendirme
+
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.guest_planner -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.flFragment, GuestFragment())
+                        .commit()
+                }
+                R.id.shop_list ->{
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, ShopListFragment() )
                         .commit()
                 }
                 R.id.recipes -> {

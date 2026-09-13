@@ -9,7 +9,7 @@
     <item
         android:id="@+id/shop_list"
         android:icon="@drawable/ic_shopping_list"
-        android:title="Market Listesi"/>
+        android:title="Alışveriş Listesi"/>
 
     <item
         android:id="@+id/guest_planner"
@@ -22,7 +22,7 @@
         android:title="Sıra Kimde?"/>
 
     <item
-        android:id="@+id/material_tracking"
+        android:id="@+id/stock_tracking"
         android:icon="@drawable/ic_chart"
         android:title="Malzeme Takibi"/>
 
