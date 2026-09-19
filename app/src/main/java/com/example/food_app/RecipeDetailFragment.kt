@@ -5,67 +5,102 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.food_app.databinding.FragmentRecipeDetailBinding
-import com.google.android.material.button.MaterialButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+// TODO : Artı eksi basıldığı zaman porsiyon sayısı hesaplama yapılacak
+private const val ARG_RECIPE_ID = "recipeId"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RecipeDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecipeDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
+    private var _binding: FragmentRecipeDetailBinding? = null
+    private val binding get() = _binding!!
 
-
-
+    private var recipeId: String? = null
+    private var servings: Int = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
-
-
-
+        recipeId = arguments?.getString(ARG_RECIPE_ID)
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentRecipeDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_detail, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val recipe = recipeId?.let { RecipeRepository.getById(it) } ?: return
 
+        servings = recipe.defaultServings
+        bindRecipe(recipe)
+        setupServingsStepper()
+        setupNotes(recipe)
+    }
 
+    private fun bindRecipe(recipe: RecipeDetail) {
+        binding.tvRecipeTitle.text = recipe.title
+        binding.tvRecipeDescription.text = recipe.description
+        binding.tvServingsCount.text = servings.toString()
 
+        binding.rvPhotoGallery.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = GalleryAdapter(recipe.photos)
+        }
+
+        binding.rvIngredients.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = IngredientAdapter(recipe.ingredients)
+        }
+
+        binding.rvSteps.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = StepAdapter(recipe.steps)
+        }
+
+        binding.etPersonalNotes.setText(recipe.personalNote)
+    }
+
+    private fun setupServingsStepper() {
+        binding.btnIncreaseServings.setOnClickListener {
+            servings++
+            binding.tvServingsCount.text = servings.toString()
+        }
+        binding.btnDecreaseServings.setOnClickListener {
+            if (servings > 1) {
+                servings--
+                binding.tvServingsCount.text = servings.toString()
+            }
+        }
+    }
+
+    private fun setupNotes(recipe: RecipeDetail) {
+        binding.etPersonalNotes.addTextChangedListener {
+            binding.btnSaveNote.visibility = View.VISIBLE
+        }
+        binding.btnSaveNote.setOnClickListener {
+            binding.tvSaveStatus.visibility = View.VISIBLE
+            binding.btnSaveNote.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecipeDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic fun newInstance(param1: String, param2: String) =
-                RecipeDetailFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+        @JvmStatic
+        fun newInstance(recipeId: String) = RecipeDetailFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_RECIPE_ID, recipeId)
+            }
+        }
     }
 }

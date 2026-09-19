@@ -41,5 +41,5 @@ interface UserDAO {
      * Tüm kullanıcıları listeler (debug/admin amaçlı).
      */
     @Query("SELECT * FROM users ORDER BY created_at DESC")
-    suspend fun getAllUsers(): List<UserEntity>
+    suspend fun getAllUsers(): List<@JvmSuppressWildcards UserEntity>
 }

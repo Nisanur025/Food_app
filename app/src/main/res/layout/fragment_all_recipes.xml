@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AllRecipesFragment"
+    android:id="@+id/AllRecipe_Fragment"
     android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout

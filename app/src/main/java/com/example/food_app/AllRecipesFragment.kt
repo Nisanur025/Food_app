@@ -153,8 +153,11 @@ class AllRecipesFragment : Fragment() {
     private fun setupRecyclerView() {
         adapter = AllRecipeAdapter(
             onRecipeClick = { recipe ->
-                // TODO: Navigation Component ile tarif detay sayfasına geç
-                // findNavController().navigate(AllRecipesFragmentDirections.toDetail(recipe.id))
+                val detailFragment = RecipeDetailFragment.newInstance(recipe.id)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment, detailFragment)
+                    .addToBackStack(null)
+                    .commit()
             },
             onFavoriteClick = { recipe ->
                 // TODO: favori durumunu veritabanına/ViewModel'e kaydet
