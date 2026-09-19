@@ -13,15 +13,22 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Logo / Başlık -->
-        <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+        <FrameLayout
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            android:background="@drawable/bg_frame_cooking"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:contentDescription="Uygulama Logosu"
-            android:src="@drawable/ic_chef_hat" />
+            android:layout_marginTop="32dp">
+            <!-- Logo / Başlık -->
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="Uygulama Logosu"
+                android:src="@drawable/ic_chef_hat" />
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/tvTitle"
@@ -76,21 +83,38 @@
 
 
         <!-- Şifre -->
-        <EditText
-            android:id="@+id/tillPassword"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:padding="15dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColorHint="@color/light_grey"
-            android:hint="Şifre "
-            android:textColor="@color/white"
-            android:drawableStart="@drawable/ic_lock"
-            android:drawablePadding="15dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/tillPassword"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColorHint="@color/light_grey"
+                android:hint="Şifre "
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="15dp"
+                android:layout_marginBottom="12dp"/>
+            <ImageView
+                android:id="@+id/togglePasswordIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_eye_hide"
+                android:layout_gravity="end"
+                android:layout_margin="8dp"/>
+
+        </FrameLayout>
+
 
         <!-- Şifre Tekrar -->
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/etConfirmPassword"
                 android:layout_width="match_parent"
@@ -103,6 +127,19 @@
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="15dp"
                 android:layout_marginBottom="12dp"/>
+            <ImageView
+                android:id="@+id/togglePasswordIvConfirm"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_eye_hide"
+                android:layout_gravity="end"
+                android:layout_margin="8dp"/>
+
+        </FrameLayout>
+
+
+
 
         <!-- Kullanım Koşulları -->
         <CheckBox

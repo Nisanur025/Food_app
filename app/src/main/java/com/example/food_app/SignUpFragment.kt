@@ -5,6 +5,8 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +20,6 @@ import kotlinx.coroutines.launch
 /**
  * Food app kayıt ol (sign up) ekranı.
  * Kullanıcı bilgilerini doğrular ve Room (SQLite) veritabanına kaydeder.
- * Navigation Component KULLANILMIYOR -- klasik FragmentTransaction ile
  * aynı Activity'deki fragmentContainer üzerinden LoginFragment'a dönülüyor.
  */
 class SignUpFragment : Fragment() {
@@ -52,6 +53,51 @@ class SignUpFragment : Fragment() {
         binding.tvLoginLink.setOnClickListener {
             goToLoginFragment()
         }
+
+        // Şifre Açık mı Kapalı mı
+        var isPasswordVisible = false
+
+        val password = view.findViewById<EditText>(R.id.tillPassword)
+        val togglePasswordIv = view.findViewById<ImageView>(R.id.togglePasswordIv)
+        val togglePasswordIvConfirm = view.findViewById<ImageView>(R.id.togglePasswordIvConfirm)
+        val etConfirmPassword = view.findViewById<EditText>(R.id.etConfirmPassword)
+        togglePasswordIv.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+                // Şifreyi GÖRÜNÜR yap
+                password.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                // İkonu ic_eye_open ile değiştir
+                togglePasswordIv.setImageResource(R.drawable.ic_eye_open)
+            } else {
+                // Şifreyi GİZLİ yap
+                password.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                // İkonu ic_eye_close ile değiştir
+                togglePasswordIv.setImageResource(R.drawable.ic_eye_hide)
+            }
+
+            // İmleci (cursor) metnin en sonuna taşı
+            password.setSelection(password.text.length)
+        }
+        togglePasswordIvConfirm.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+               etConfirmPassword.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                togglePasswordIvConfirm.setImageResource(R.drawable.ic_eye_open)
+            } else {
+                etConfirmPassword.inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+                togglePasswordIvConfirm.setImageResource(R.drawable.ic_eye_hide)
+            }
+
+            etConfirmPassword.setSelection(etConfirmPassword.text.length)
+        }
+
+
     }
 
     private fun goToLoginFragment() {
@@ -154,6 +200,7 @@ class SignUpFragment : Fragment() {
             }
         }
     }
+
 
     private fun setLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
