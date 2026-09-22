@@ -83,6 +83,7 @@
                     android:layout_height="48dp"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_plus_square"
+                    android:clickable="true"
                     app:tint="#6A6A6A"
                     android:contentDescription="artı"/>
 
@@ -138,6 +139,5 @@
         </androidx.cardview.widget.CardView>
 
 
-        <!--Todo: Menüdeki  olmayan malzemeleri Alışveriş listesine otomatik çıkartıp listeye eklenebilir-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

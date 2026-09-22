@@ -59,7 +59,10 @@
             android:layout_height="1dp"
             android:background="#2F2F35" />
 
-        <!-- Body -->
+
+
+        <!-- Uygula Butonu-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,9 +84,10 @@
                 android:id="@+id/chipGroupCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:singleLine="false"
                 app:chipSpacingHorizontal="10dp"
-                app:chipSpacingVertical="10dp">
+                app:chipSpacingVertical="10dp"
+                app:singleLine="false"
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipCorba"
@@ -92,11 +96,11 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:text="Çorba"
+                    android:textColor="#F2F2F0"
+                    app:checkedIconTint="#2F9E6E"
                     app:chipBackgroundColor="#296052"
                     app:chipStrokeColor="#2F9E6E"
-                    app:chipStrokeWidth="1.5dp"
-                    app:checkedIconTint="#2F9E6E"
-                    android:textColor="#F2F2F0" />
+                    app:chipStrokeWidth="1.5dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipAnaYemek"
@@ -105,11 +109,11 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:text="Ana yemek"
+                    android:textColor="#F2F2F0"
+                    app:checkedIconTint="#E0523F"
                     app:chipBackgroundColor="#3D1F1F"
                     app:chipStrokeColor="#E0523F"
-                    app:chipStrokeWidth="1.5dp"
-                    app:checkedIconTint="#E0523F"
-                    android:textColor="#F2F2F0" />
+                    app:chipStrokeWidth="1.5dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipTatli"
@@ -118,11 +122,11 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:text="Tatlı"
+                    android:textColor="#F2F2F0"
+                    app:checkedIconTint="#D99A3D"
                     app:chipBackgroundColor="#906524"
                     app:chipStrokeColor="#D99A3D"
-                    app:chipStrokeWidth="1.5dp"
-                    app:checkedIconTint="#D99A3D"
-                    android:textColor="#F2F2F0" />
+                    app:chipStrokeWidth="1.5dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipSalata"
@@ -131,23 +135,22 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:text="Salata"
+                    android:textColor="#F2F2F0"
+                    app:checkedIconTint="#5A8FD6"
                     app:chipBackgroundColor="#295795"
                     app:chipStrokeColor="#5A8FD6"
-                    app:chipStrokeWidth="1.5dp"
-                    app:checkedIconTint="#5A8FD6"
-                    android:textColor="#F2F2F0" />
+                    app:chipStrokeWidth="1.5dp" />
 
             </com.google.android.material.chip.ChipGroup>
 
 
-            <!-- TODO: Kendi kategorini oluştur ilk başka görünür değil kullanıcı butona basınca görünür olsun -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="24dp"
-                android:layout_marginHorizontal="24dp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <!-- Metin Giriş Kutusu -->
                 <EditText
@@ -169,68 +172,34 @@
                     android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_chip_green"
-                    android:src="@drawable/ic_send"
                     android:contentDescription="Gönder"
+                    android:src="@drawable/ic_send"
                     app:tint="#19382a" />
 
             </LinearLayout>
 
-            <!-- Yeni kategori giriş kutusu (varsayılan gizli, tıklanınca gösterilir) -->
             <LinearLayout
-                android:id="@+id/layoutNewCategoryComposer"
+                android:id="@+id/layoutNewDishComposer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:orientation="vertical"
                 android:background="@color/card_bg"
-                android:padding="12dp"
-                android:visibility="gone">
+                android:orientation="vertical"
+                android:padding="12dp">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
+                    android:id="@+id/etDishName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#2F2F35"
-                    app:hintTextColor="#5C5C62">
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_square_black_stroke"
+                    android:hint="Menü adını yaz. (Örn : Yayla Çorbası)"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_grey"
+                    android:textSize="16sp" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etNewCategoryName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Kategori adı yaz, örn. Mezeler"
-                        android:maxLength="20"
-                        android:textColor="#F2F2F0"
-                        android:textColorHint="#5C5C62" />
-                </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnCancelCategory"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:text="Vazgeç"
-                        android:textColor="#8C8C92"
-                        app:backgroundTint="#2A2A30" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnConfirmCategory"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:enabled="false"
-                        android:text="Ekle"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#A774D8" />
-                </LinearLayout>
             </LinearLayout>
 
             <!-- Hazırlık süresi bölümü -->
@@ -295,6 +264,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/card_bg"
+                    android:layout_marginBottom="8dp"
                     android:buttonTint="#7FC4DD"
                     android:paddingHorizontal="14dp"
                     android:paddingVertical="12dp"
@@ -313,15 +283,13 @@
                 android:orientation="vertical" />
 
             <!-- Kendi süreni ekle -->
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginHorizontal="24dp"
                 android:gravity="center_vertical"
-                android:layout_marginVertical="24dp"
-                android:layout_marginHorizontal="24dp">
+                android:orientation="horizontal">
 
                 <!-- Metin Giriş Kutusu -->
                 <EditText
@@ -343,49 +311,26 @@
                     android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_chip_green"
-                    android:src="@drawable/ic_send"
                     android:contentDescription="Gönder"
+                    android:src="@drawable/ic_send"
                     app:tint="#19382a" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <View
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnApplyFilter"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:background="#2F2F35" />
-
-        <!-- Footer -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="10dp">
-
-            <TextView
-                android:id="@+id/tvSelectedCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="0 kategori seçildi"
-                android:textColor="#5C5C62"
-                android:textSize="12sp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnApplyFilter"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:text="Filtreyi uygula"
-                android:textColor="#141416"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:backgroundTint="#F2F2F0"
-                app:cornerRadius="14dp" />
-
-        </LinearLayout>
+            android:layout_height="52dp"
+            android:text="Filtreyi uygula"
+            android:textColor="#141416"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="#F2F2F0"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="24dp"
+            app:cornerRadius="14dp" />
 
     </LinearLayout>
 

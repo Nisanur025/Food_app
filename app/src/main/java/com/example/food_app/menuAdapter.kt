@@ -9,8 +9,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class MenuAdapter(private val items: List<menuItem>) :
-    RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
+class MenuAdapter(
+    private val items: MutableList<menuItem>,
+    private val onDeleteClick: (menuItem, Int) -> Unit
+) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
 
     class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val iconCircle: FrameLayout = view.findViewById(R.id.iconCircle)
@@ -18,7 +20,7 @@ class MenuAdapter(private val items: List<menuItem>) :
         val ad: TextView = view.findViewById(R.id.tvAd)
         val kategoriChip: TextView = view.findViewById(R.id.tv_kategory_guest)
         val sureChip: TextView = view.findViewById(R.id.tvTime)
-        val onayIcon: ImageView = view.findViewById(R.id.iv_confirm)
+        val deleteIcon: ImageView = view.findViewById(R.id.iv_del)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
@@ -44,8 +46,8 @@ class MenuAdapter(private val items: List<menuItem>) :
                 holder.icon.setColorFilter(ContextCompat.getColor(context, R.color.green))
                 holder.kategoriChip.setBackgroundResource(R.drawable.bg_chip_green)
                 holder.kategoriChip.setTextColor(ContextCompat.getColor(context, R.color.dark_green))
-                holder.onayIcon.setImageResource(R.drawable.ic_check)
-                holder.onayIcon.setColorFilter(ContextCompat.getColor(context, R.color.dark_green))
+
+                holder.deleteIcon.setColorFilter(ContextCompat.getColor(context, R.color.dark_green))
             }
             MenuTipi.ANA_YEMEK -> {
                 holder.iconCircle.setBackgroundResource(R.drawable.bg_icon_circle_meal)
@@ -53,8 +55,8 @@ class MenuAdapter(private val items: List<menuItem>) :
                 holder.icon.setColorFilter(ContextCompat.getColor(context, R.color.red))
                 holder.kategoriChip.setBackgroundResource(R.drawable.bg_chip_red)
                 holder.kategoriChip.setTextColor(ContextCompat.getColor(context, R.color.red))
-                holder.onayIcon.setImageResource(R.drawable.ic_check)
-                holder.onayIcon.setColorFilter(ContextCompat.getColor(context, R.color.red))
+
+                holder.deleteIcon.setColorFilter(ContextCompat.getColor(context, R.color.red))
             }
             MenuTipi.TATLI -> {
                 holder.iconCircle.setBackgroundResource(R.drawable.bg_icon_circle_dessert)
@@ -62,21 +64,26 @@ class MenuAdapter(private val items: List<menuItem>) :
                 holder.icon.setColorFilter(ContextCompat.getColor(context, R.color.orange))
                 holder.kategoriChip.setBackgroundResource(R.drawable.bg_chip_orange)
                 holder.kategoriChip.setTextColor(ContextCompat.getColor(context, R.color.orange))
-                holder.onayIcon.setImageResource(R.drawable.ic_check)
-                holder.onayIcon.setColorFilter(ContextCompat.getColor(context, R.color.orange))
-            }
 
+                holder.deleteIcon.setColorFilter(ContextCompat.getColor(context, R.color.orange))
+            }
             MenuTipi.SALATA -> {
                 holder.iconCircle.setBackgroundResource(R.drawable.bg_icon_circle_salad)
                 holder.icon.setImageResource(R.drawable.ic_salad)
                 holder.icon.setColorFilter(ContextCompat.getColor(context, R.color.blue))
                 holder.kategoriChip.setBackgroundResource(R.drawable.bg_chip_blue)
                 holder.kategoriChip.setTextColor(ContextCompat.getColor(context, R.color.blue))
-                holder.onayIcon.setImageResource(R.drawable.ic_check)
-                holder.onayIcon.setColorFilter(ContextCompat.getColor(context, R.color.blue))
+
+                holder.deleteIcon.setColorFilter(ContextCompat.getColor(context, R.color.blue))
             }
         }
 
+        holder.deleteIcon.setOnClickListener {
+            val currentPosition = holder.adapterPosition
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                onDeleteClick(item, currentPosition)
+            }
+        }
     }
 
     override fun getItemCount() = items.size
