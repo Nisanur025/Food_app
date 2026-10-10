@@ -38,5 +38,8 @@
     <color name="container_background">#484C4C4C</color>
     <color name="card_background">#48595959</color>
     <color name="active_pink">#F3856A</color>
+    <color name="light_orange">#D59F5F</color>
+    <color name="medium_orange">#C28A3C</color>
+
 
 </resources>

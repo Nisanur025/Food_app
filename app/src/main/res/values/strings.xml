@@ -47,4 +47,31 @@
     <string name="hint_personal_notes">Kendi notunu ekle: nasıl uyarladın, ne değiştirdin, tekrar yaparken hatırlaman gerekenler...</string>
     <string name="btn_save_note">Notu kaydet</string>
 
+    <!-- Home Fragment Strings -->
+    <string name="label_greeting">Merhaba</string>
+    <string name="title_cook_question">Ne pişirelim?</string>
+    <string name="today_recipe_label">Bugünün yemeği · akşam</string>
+    <string name="today_recipe_title">Tavuklu Sebze Sote</string>
+    <string name="today_recipe_meta">30 dk · 4 kişilik</string>
+    <string name="warning_stock_message">3 malzeme yakında bitiyor:\n süt, yumurta, ıspanak</string>
+    <string name="btn_add_to_shopping_list">Alışveriş listesine ekle</string>
+    <string name="card_all_recipes_title">Tüm tarifler</string>
+    <string name="card_all_recipes_subtitle">128 tarif</string>
+    <string name="card_shop_list_title">Alışveriş listesi</string>
+    <string name="card_shop_list_subtitle">6 ürün seni bekliyor</string>
+    <string name="title_weekly_menu">Haftalık Menün</string>
+    <string name="day_monday">Pzt</string>
+    <string name="day_tuesday">Sal</string>
+    <string name="day_wednesday">Çarş - Bugün</string>
+    <string name="recipe_lentil_soup">Mercimek\nÇorbası</string>
+    <string name="recipe_oven_meatballs">Fırın\nKöfte</string>
+    <string name="recipe_chicken_sote">Tavuk Sote</string>
+    <string name="day_thursday">Perş</string>
+    <string name="day_friday">Cum</string>
+    <string name="day_saturday">Cmt</string>
+    <string name="day_sunday">Pzr</string>
+    <string name="status_not_planned">Planlanmadı</string>
+    <string name="title_quick_recipes">Şipşak Tarifler</string>
+    <string name="cd_filter_button">Filtre</string>
+
 </resources>

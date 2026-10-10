@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,17 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
         <TextView
             android:id="@+id/hello_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Merhaba"
+            android:text="@string/label_greeting"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="16sp"
-            android:textColor="#8C8B8B"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginTop="0dp"
             android:layout_marginStart="24dp"/>
@@ -32,31 +29,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cook_question"
-            android:text="Ne pişirelim?"
+            android:text="@string/title_cook_question"
             android:textSize="23sp"
             android:textStyle="bold"
-            android:textColor="#B8B5B5"
+            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/hello_home"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="24dp"
-
-            />
+            android:layout_marginStart="24dp" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/today_recipeCard"
+            style="@style/Widget.App.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardBackgroundColor="@color/card_bg"
-            app:cardCornerRadius="16dp"
-            app:strokeWidth="0dp"
-            app:cardElevation="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cook_question"
             android:layout_marginEnd="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="16dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -70,18 +62,17 @@
                     android:id="@+id/fire"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_fire"
+                    android:src="@drawable/ic_fire"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    />
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
                 <TextView
                     android:id="@+id/tvLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bugünün yemeği · akşam"
-                    android:textColor="#FA9A5A"
+                    android:text="@string/today_recipe_label"
+                    android:textColor="@color/light_orange"
                     android:textSize="12sp"
                     android:layout_marginStart="15dp"
                     app:layout_constraintStart_toEndOf="@id/fire"
@@ -92,9 +83,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="Tavuklu Sebze Sote"
+                    android:text="@string/today_recipe_title"
                     android:layout_marginStart="15dp"
-                    android:textColor="#EEF7EE"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/ivChevron"
@@ -106,9 +97,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="30 dk · 4 kişilik"
+                    android:text="@string/today_recipe_meta"
                     android:layout_marginStart="15dp"
-                    android:textColor="#C3DDC9"
+                    android:textColor="@color/text_secondary"
                     android:textSize="13sp"
                     app:layout_constraintStart_toEndOf="@id/fire"
                     app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -121,15 +112,11 @@
                     app:layout_constraintBottom_toBottomOf="@id/tvMeta"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#C3DDC9"
-                    />
+                    app:tint="@color/light_grey" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-
-
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_vw_warning"
@@ -151,35 +138,30 @@
                 android:layout_marginEnd="24dp"
                 android:textSize="16sp"
                 android:padding="10dp"
-                android:textColor="#D59F5F"
+                android:textColor="@color/light_orange"
                 android:textStyle="bold"
                 android:drawableStart="@drawable/ic_warning"
                 android:drawablePadding="25dp"
-                android:text="3 malzeme yakında bitiyor:\n süt, yumurta, ıspanak">
-
-            </TextView>
+                android:text="@string/warning_stock_message" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:text="Alışveriş listesine ekle"
+                android:text="@string/btn_add_to_shopping_list"
                 app:icon="@drawable/ic_chef_hat"
                 app:cornerRadius="30dp"
                 app:iconSize="24dp"
-                app:backgroundTint="#C28A3C"
+                app:backgroundTint="@color/medium_orange"
                 android:layout_marginTop="55dp"
                 android:layout_marginBottom="10dp"
                 app:iconGravity="textStart"
                 app:iconPadding="10dp"
                 android:focusable="true"
-                android:clickable="true">
-
-            </com.google.android.material.button.MaterialButton>
+                android:clickable="true" />
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
-
             android:id="@+id/layout_cards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -193,50 +175,38 @@
             <!-- 1. KART: Tüm Tarifler -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/all_recipes_mc"
+                style="@style/Widget.App.Card.Dark"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:strokeWidth="0dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="#1E1E1E"
-
-                >
+                android:foreground="?attr/selectableItemBackground">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                     android:padding="16dp">
-
+                    style="@style/Widget.App.CardContent">
 
                     <ImageView
+                        style="@style/Widget.App.CardIcon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_book"
-                        android:background="@drawable/bg_square_purple"
-                        android:padding="10dp"
-                        app:tint="#FFFFFF" />
+                        android:background="@drawable/bg_square_purple" />
 
                     <TextView
+                        style="@style/TextAppearance.App.CardTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Tüm tarifler"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:text="@string/card_all_recipes_title" />
 
                     <TextView
+                        style="@style/TextAppearance.App.CardSubtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="128 tarif"
-                        android:textColor="#9E9E9E"
-                        android:textSize="13sp" />
+                        android:text="@string/card_all_recipes_subtitle" />
 
                 </LinearLayout>
 
@@ -245,50 +215,38 @@
             <!-- 2. KART: Alışveriş Listesi -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btn_shop_list"
+                style="@style/Widget.App.Card.Dark"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:strokeWidth="0dp"
-                app:cardBackgroundColor="#1E1E1E"
-
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    >
+                    style="@style/Widget.App.CardContent">
 
-                    <!-- Yeşil İkon -->
                     <ImageView
+                        style="@style/Widget.App.CardIcon"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/ic_shopping_list"
-                        android:background="@drawable/bg_square_green"
-                        android:padding="10dp"
-                        app:tint="#FFFFFF" />
+                        android:background="@drawable/bg_square_green" />
 
                     <TextView
+                        style="@style/TextAppearance.App.CardTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Alışveriş listesi"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:text="@string/card_shop_list_title" />
 
                     <TextView
+                        style="@style/TextAppearance.App.CardSubtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="6 ürün seni bekliyor"
-                        android:textColor="#9E9E9E"
-                        android:textSize="13sp" />
+                        android:text="@string/card_shop_list_subtitle" />
 
                 </LinearLayout>
 
@@ -296,22 +254,19 @@
 
         </LinearLayout>
 
+        <!--Haftalık Menü Yazı-->
         <TextView
             android:id="@+id/weekly_menu"
+            style="@style/TextAppearance.App.SectionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Haftalık Menün"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:text="@string/title_weekly_menu"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_cards"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            />
+            android:layout_marginStart="24dp" />
 
+        <!--Haftalık Menü Kart Scroll (Burası daha sonra düzenlenecek)-->
         <HorizontalScrollView
             android:id="@+id/weekly_menu_layout"
             android:layout_width="match_parent"
@@ -325,412 +280,39 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1E1E1E">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Pzt"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_check"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Mercimek\nÇorbası"
-                            android:textColor="#D4CDCD"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1E1E1E">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Sal"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_check"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Fırın\nKöfte"
-                            android:textColor="#D4CDCD"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="@android:color/transparent">
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="@drawable/bg_today_menu">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Çarş - Bugün"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_check"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Tavuk Sote"
-                            android:textColor="#D4CDCD"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1E1E1E">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Perş"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_plus"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Planlanmadı"
-                            android:textColor="#5A5A5A"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1E1E1E">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Cum"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_plus"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Planlanmadı"
-                            android:textColor="#5A5A5A"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1E1E1E">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Cmt"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_plus"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Planlanmadı"
-                            android:textColor="#5A5A5A"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1E1E1E">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Pzr"
-                            android:textColor="#A1A1A1"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"/>
-
-                        <!-- Yeşil İkon -->
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_plus"
-                            android:padding="10dp"
-                            app:tint="#8DD6C7" />
-
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Planlanmadı"
-                            android:textColor="#5A5A5A"
-                            android:textStyle="bold"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-
+                android:orientation="horizontal">
+                <!-- Gün kartları buraya gelecek -->
             </LinearLayout>
-
         </HorizontalScrollView>
-
-
-
-
 
         <TextView
             android:id="@+id/all_recipes_tv"
+            style="@style/TextAppearance.App.SectionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="Şipşak Tarifler"
-            android:textSize="18sp"
+            android:text="@string/title_quick_recipes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/weekly_menu_layout"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="24dp"
-            />
+            android:layout_marginStart="24dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/black"
-            app:icon="@drawable/ic_filter"
-            app:iconSize="24dp"
-            app:iconTint="@color/white"
+            style="@style/Widget.App.FilterButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@id/all_recipes_tv"
-            app:iconGravity="end"
             app:layout_constraintTop_toBottomOf="@id/weekly_menu_layout"
-            android:contentDescription="filtre">
-
-        </com.google.android.material.button.MaterialButton>
+            android:contentDescription="@string/cd_filter_button" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecipes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/all_recipes_tv"
             android:layout_marginVertical="24dp"
-            android:layout_marginHorizontal="24dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            android:layout_marginEnd="24dp"-->
-<!--            android:layout_marginBottom="84dp"-->
-<!--            android:src="@drawable/lightning"-->
-<!--            app:maxImageSize="40dp"-->
-<!--            app:backgroundTint="#F0D38181"-->
-<!--            android:contentDescription="asistan">-->
-
-
-<!--        </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
-
-
+            android:layout_marginHorizontal="24dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

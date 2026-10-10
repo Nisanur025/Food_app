@@ -93,7 +93,7 @@
                 <Button
                     android:id="@+id/FilterAllBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:text="@string/filter_all"
                     app:backgroundTint="@null"
                     android:background="@drawable/bg_today_menu"
