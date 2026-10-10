@@ -38,5 +38,80 @@
         <item name="android:layout_marginEnd">12dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+    <!-- Başlık / Açıklama -->
+    <style name="RecipeDetailTitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
 
+    <style name="RecipeDetailDescriptionStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <!-- Kart -->
+    <style name="RecipeDetailCardStyle" parent="Widget.Material3.CardView.Filled">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <style name="RecipeDetailCardContentStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!--alt yazılar-->
+    <style name="RecipeDetailCardHeaderStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Kart içindeki liste (Malzeme / Adım) -->
+    <style name="RecipeDetailCardListStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:nestedScrollingEnabled">false</item>
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+    </style>
+
+    <!-- Porsiyon stepper -->
+    <style name="RecipeDetailStepperButtonStyle" parent="Widget.Material3.Button.IconButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="iconTint">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <!--Artı Eksi Yazı-->
+    <style name="RecipeDetailStepperCountStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Ana buton (Pişirmeye Başla / Notu kaydet) -->
+    <style name="RecipeDetailPrimaryButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/bg_today_menu</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@null</item>
+    </style>
 </resources>

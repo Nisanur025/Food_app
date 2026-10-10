@@ -1,305 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeDetail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".RecipeDetailFragment"
-    android:contentDescription="scrollview"
     android:background="@color/black"
-    android:id="@+id/recipeDetail">
+    android:clipToPadding="false"
+    android:paddingTop="10dp"
+    android:paddingBottom="50dp"
+    tools:context=".RecipeDetailFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical">
 
-        <!--Resim-->
+        <!-- Resim -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_photo_gallery"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <LinearLayout
-            android:id="@+id/title_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/rv_photo_gallery"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <!-- Başlık ve Açıklama -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_recipe_title"
+            style="@style/RecipeDetailTitleStyle" />
 
-            android:layout_marginHorizontal="24dp">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_recipe_description"
+            style="@style/RecipeDetailDescriptionStyle" />
 
-            <!--Başlık ve Açıklama-->
-            <TextView
-                android:id="@+id/tv_recipe_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginTop="24dp"/>
-            <TextView
-                android:id="@+id/tv_recipe_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="10dp"/>
-
-        </LinearLayout>
-
-        <!--porsiyon ve butonlar-->
+        <!-- Porsiyon ve Butonlar -->
         <LinearLayout
             android:id="@+id/layout_servings_stepper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingHorizontal="8dp"
-            app:layout_constraintTop_toBottomOf="@id/title_description"
-            app:layout_constraintStart_toStartOf="parent">
+            android:orientation="horizontal">
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_decrease_servings"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_minus_square"
-                app:tint="#6A6A6A"
-                android:contentDescription="eksi"/>
+                style="@style/RecipeDetailStepperButtonStyle"
+                android:contentDescription="@string/cd_decrease_servings"
+                app:icon="@drawable/ic_minus_square" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_servings_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:textColor="@color/white"
-                android:text="4"
-                android:textSize="20sp"/>
+                style="@style/RecipeDetailStepperCountStyle"
+                android:text="@string/default_servings_count" />
 
-            <ImageButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_increase_servings"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_plus_square"
-                app:tint="#6A6A6A"
-                android:contentDescription="artı"/>
+                style="@style/RecipeDetailStepperButtonStyle"
+                android:contentDescription="@string/cd_increase_servings"
+                app:icon="@drawable/ic_plus_square" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_serving"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#939090"
-                android:text="porsiyon"
-                android:textSize="13sp"/>
+                android:text="@string/label_serving"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
+                android:textColor="@color/text_secondary" />
 
-            <View
+            <Space
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Pişirmeye Başla"
-                app:backgroundTint="@null"
-                android:background="@drawable/bg_today_menu"
-                android:layout_marginEnd="24dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start_cooking"
+                style="@style/RecipeDetailPrimaryButtonStyle"
+                android:text="@string/btn_start_cooking" />
         </LinearLayout>
 
-
-
-        <!--Malzeme Kartı-->
-        <androidx.cardview.widget.CardView
+        <!-- Malzeme Kartı -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_ingredients"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#48595959"
-            app:cardCornerRadius="12dp"
-            app:layout_constraintTop_toBottomOf="@id/layout_servings_stepper">
+            style="@style/RecipeDetailCardStyle"
+            android:layout_marginHorizontal="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+            <LinearLayout style="@style/RecipeDetailCardContentStyle">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_ingredients_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Malzemeler"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    style="@style/RecipeDetailCardHeaderStyle"
+                    android:text="@string/header_ingredients" />
 
-                <!-- Her satır: checkbox + miktar + malzeme adı -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_ingredients"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-                <!--
-                  ingredient_item.xml örneği:
-                  <LinearLayout orientation="horizontal" paddingVertical="6dp">
-                      <TextView id="tv_amount" textStyle="bold" width="80dp" text="1 cup"/>
-                      <TextView id="tv_name" text="kırmızı mercimek"/>
-                  </LinearLayout>
-                -->
-
+                    style="@style/RecipeDetailCardListStyle" />
             </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        </androidx.cardview.widget.CardView>
-
-
-        <!--Step Kartı-->
-        <androidx.cardview.widget.CardView
+        <!-- Adım Kartı -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_steps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#48595959"
-            app:cardCornerRadius="12dp"
+            style="@style/RecipeDetailCardStyle"
+            android:layout_marginHorizontal="24dp">
 
-            app:layout_constraintTop_toBottomOf="@id/card_ingredients">
+            <LinearLayout style="@style/RecipeDetailCardContentStyle">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Steps"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/RecipeDetailCardHeaderStyle"
+                    android:text="@string/header_steps" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_steps"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-                <!--
-                  step_item.xml örneği:
-                  <LinearLayout orientation="horizontal">
-                      <TextView id="tv_step_number" background="@drawable/bg_circle_orange"
-                                width="24dp" height="24dp" gravity="center" text="1"/>
-                      <LinearLayout orientation="vertical" marginStart="12dp">
-                          <TextView id="tv_step_title" textStyle="bold"/>
-                          <TextView id="tv_step_body" textColor="@color/text_secondary"/>
-                      </LinearLayout>
-                  </LinearLayout>
-                -->
+                    style="@style/RecipeDetailCardListStyle" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-
-        <!--Kişisel not kutusu-->
-        <androidx.cardview.widget.CardView
+        <!-- Kişisel Not Kartı -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#48595959"
-            app:cardCornerRadius="12dp"
-            app:layout_constraintTop_toBottomOf="@id/card_steps"
-            app:layout_constraintBottom_toBottomOf="parent">
+            style="@style/RecipeDetailCardStyle"
+            android:layout_marginHorizontal="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_marginBottom="50dp">
+            <LinearLayout style="@style/RecipeDetailCardContentStyle">
 
-                <!-- Başlık satırı: ikon + "Notlarım" + kaydetme durumu -->
+                <!-- Başlık satırı: ikon + başlık + kaydetme durumu -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
+                        android:importantForAccessibility="no"
                         android:src="@drawable/ic_note"
-                        app:tint="#FF5722" />
+                        app:tint="@color/orange" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/RecipeDetailCardHeaderStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:layout_marginStart="8dp"
-                        android:text="Notlarım"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:layout_weight="1"
+                        android:text="@string/header_my_notes" />
 
-                    <!-- Kaydetmeden önce gizli, yazarken görünür -->
-                    <TextView
+                    <!-- Yazarken görünür -->
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_save_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kaydedildi ✓"
-                        android:textColor="#808080"
-                        android:textSize="12sp"
+                        android:text="@string/status_note_saved"
+                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                        android:textColor="@color/text_secondary"
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <!-- Kullanıcının kendi notunu yazdığı alan -->
-                <EditText
-                    android:id="@+id/et_personal_notes"
+                <!-- Not yazma alanı -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:minLines="3"
-                    android:gravity="top|start"
-                    android:background="#4B5A5A5A"
-                    android:padding="12dp"
-                    android:hint="Kendi notunu ekle: nasıl uyarladın, ne değiştirdin, tekrar yaparken hatırlaman gerekenler..."
-                    android:textColorHint="@color/light_grey"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:inputType="textMultiLine|textCapSentences"
-                    android:imeOptions="actionDone" />
+                    android:hint="@string/hint_personal_notes">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_personal_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|start"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:minLines="3"
+                        android:textColor="@color/text_secondary"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Yazarken görünür, boşken gizli -->
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_save_note"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    style="@style/RecipeDetailPrimaryButtonStyle"
                     android:layout_gravity="end"
-                    android:text="Notu kaydet"
-                    android:textAllCaps="false"
-                    android:background="@drawable/bg_today_menu"
-                    android:textColor="@color/white"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/btn_save_note"
                     android:visibility="gone" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-</ScrollView>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

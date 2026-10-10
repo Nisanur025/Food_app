@@ -34,4 +34,17 @@
     <string name="filter_main_dish">Ana Yemek</string>
     <string name="filter_dessert">Tatlı</string>
 
+    <!-- Recipe Detail Strings -->
+    <string name="cd_decrease_servings">Porsiyonu azalt</string>
+    <string name="cd_increase_servings">Porsiyonu artır</string>
+    <string name="default_servings_count">4</string>
+    <string name="label_serving">porsiyon</string>
+    <string name="btn_start_cooking">Pişirmeye Başla</string>
+    <string name="header_ingredients">Malzemeler</string>
+    <string name="header_steps">Yapılışı</string>
+    <string name="header_my_notes">Notlarım</string>
+    <string name="status_note_saved">Kaydedildi ✓</string>
+    <string name="hint_personal_notes">Kendi notunu ekle: nasıl uyarladın, ne değiştirdin, tekrar yaparken hatırlaman gerekenler...</string>
+    <string name="btn_save_note">Notu kaydet</string>
+
 </resources>
