@@ -74,4 +74,8 @@
     <string name="title_quick_recipes">Şipşak Tarifler</string>
     <string name="cd_filter_button">Filtre</string>
 
+    <!--Ana Sayfa Yemek Kartı-->
+    <string name="hint_recipe_name">Yemek adı</string>
+    <string name="save">Kaydet</string>
+    <string name="cancel">İptal</string>
 </resources>

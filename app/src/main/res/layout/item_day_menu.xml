@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.App.Card.Dark"
+    android:layout_width="110dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp">
+
+    <LinearLayout
+        android:id="@+id/dayContent"
+        style="@style/Widget.App.CardContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp">
+
+        <!--Gün Adı-->
+        <TextView
+            android:id="@+id/tvDayName"
+            style="@style/TextAppearance.App.DayName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--Check İkon-->
+        <ImageView
+            android:id="@+id/ivStatus"
+            style="@style/Widget.App.DayIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no" />
+
+        <!--Tarif Adı-->
+        <TextView
+            android:id="@+id/tvRecipe"
+            style="@style/TextAppearance.App.DayRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

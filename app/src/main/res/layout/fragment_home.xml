@@ -266,24 +266,21 @@
             android:layout_marginTop="24dp"
             android:layout_marginStart="24dp" />
 
-        <!--Haftalık Menü Kart Scroll (Burası daha sonra düzenlenecek)-->
-        <HorizontalScrollView
+        <!--Haftalık Menü Kart -->
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/weekly_menu_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/weekly_menu"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="24dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <!-- Gün kartları buraya gelecek -->
-            </LinearLayout>
-        </HorizontalScrollView>
+            tools:listitem="@layout/item_day_menu"
+            tools:itemCount="7" />
 
         <TextView
             android:id="@+id/all_recipes_tv"
