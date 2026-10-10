@@ -8,22 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.food_app.databinding.FragmentAllRecipesBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AllRecipesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AllRecipesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-
 
 
     private var _binding: FragmentAllRecipesBinding? = null
@@ -32,16 +18,9 @@ class AllRecipesFragment : Fragment() {
     private lateinit var adapter: AllRecipeAdapter
 
 
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -76,13 +55,11 @@ class AllRecipesFragment : Fragment() {
     }
 
 
-    // Geçici örnek veri — gerçek veri kaynağına (Room/API) bağlanana kadar
-    // adapter'ın ve masonry grid'in çalıştığını görmek için
     private fun sampleRecipes(): List<AllRecipe> = listOf(
         AllRecipe(
             id = "1",
             title = "Mercimek çorbası",
-            imageUrl = "https://picsum.photos/seed/1/400/650",
+            imageUrl = "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600",
             durationMinutes = 25,
             difficulty = "Kolay",
             category = "Ana yemek"
@@ -90,7 +67,7 @@ class AllRecipesFragment : Fragment() {
         AllRecipe(
             id = "2",
             title = "Akdeniz salatası",
-            imageUrl = "https://picsum.photos/seed/2/400/250",
+            imageUrl = "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600",
             durationMinutes = 10,
             difficulty = "Kolay",
             category = "Ana yemek"
@@ -98,7 +75,7 @@ class AllRecipesFragment : Fragment() {
         AllRecipe(
             id = "3",
             title = "Karides tava",
-            imageUrl = "https://picsum.photos/seed/3/400/300",
+            imageUrl = "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600",
             durationMinutes = 35,
             difficulty = "Orta",
             category = "Ana yemek"
@@ -106,7 +83,7 @@ class AllRecipesFragment : Fragment() {
         AllRecipe(
             id = "4",
             title = "Çikolatalı kurabiye",
-            imageUrl = "https://picsum.photos/seed/4/400/550",
+            imageUrl = "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600",
             durationMinutes = 20,
             difficulty = "Kolay",
             category = "Tatlı"
@@ -114,7 +91,7 @@ class AllRecipesFragment : Fragment() {
         AllRecipe(
             id = "5",
             title = "Sebzeli omlet",
-            imageUrl = "https://picsum.photos/seed/5/400/400",
+            imageUrl = "https://images.unsplash.com/photo-1510693206972-df098062cb71?w=600",
             durationMinutes = 12,
             difficulty = "Kolay",
             category = "Kahvaltı"
@@ -122,7 +99,7 @@ class AllRecipesFragment : Fragment() {
         AllRecipe(
             id = "6",
             title = "Fırında somon",
-            imageUrl = "https://picsum.photos/seed/6/400/700",
+            imageUrl = "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600",
             durationMinutes = 30,
             difficulty = "Orta",
             category = "Ana yemek"
@@ -130,15 +107,15 @@ class AllRecipesFragment : Fragment() {
         AllRecipe(
             id = "7",
             title = "Meyveli smoothie",
-            imageUrl = "https://picsum.photos/seed/7/400/280",
+            imageUrl = "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600",
             durationMinutes = 5,
             difficulty = "Kolay",
             category = "Kahvaltı"
         ),
         AllRecipe(
             id = "8",
-            title = "Mantı",
-            imageUrl = "https://picsum.photos/seed/8/400/500",
+            title = "Taco",
+            imageUrl = "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600",
             durationMinutes = 40,
             difficulty = "Orta",
             category = "Ana yemek"
@@ -174,23 +151,4 @@ class AllRecipesFragment : Fragment() {
     }
 
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AllRecipesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AllRecipesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
