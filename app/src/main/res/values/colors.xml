@@ -34,4 +34,7 @@
     <color name="text_secondary">#9A9AA5</color>
     <color name="chip_border">#33333A</color>
 
+    <color name="primary_orange">#FF5722</color>
+    <color name="container_background">#484C4C4C</color>
+    <color name="card_background">#48595959</color>
 </resources>

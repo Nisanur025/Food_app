@@ -12,4 +12,21 @@
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
+
+    <!-- Checkbox'lar için ortak stil -->
+    <style name="LarderCheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_square_black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+
+    <!--  gri bilgilendirme TextView'ları için ortak stil -->
+    <style name="SubtitleTextInfoStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -1,7 +1,26 @@
 <resources>
     <string name="app_name">food_app</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Menüyü Aç</string>
     <string name="navigation_drawer_close">Menüyü Kapat</string>
+
+    <!-- Shop List Fragment Strings -->
+    <string name="shop_list_title">Alışveriş Listesi</string>
+    <string name="home_materials_title">Evdeki Temel Malzemeler</string>
+    <string name="home_materials_stock_count">6/6 Stokta</string>
+    <string name="home_materials_message">Bitenleri işaretle listeye eklensin.</string>
+
+    <!-- Shop List Checkboxes -->
+    <string name="ingredient_salt">Tuz</string>
+    <string name="ingredient_black_pepper">Karabiber</string>
+    <string name="ingredient_olive_oil">Zeytinyağı</string>
+    <string name="ingredient_flour">Un</string>
+    <string name="ingredient_rice">Pirinç</string>
+    <string name="ingredient_sugar">Şeker</string>
+
+    <!--Shop List Actions -->
+    <string name="edit_larder_list">Kiler listeni düzenle</string>
+    <string name="btn_add_new_product">Yeni Ürün Ekle</string>
+
 </resources>

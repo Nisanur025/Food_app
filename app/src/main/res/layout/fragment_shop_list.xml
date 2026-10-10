@@ -9,14 +9,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
 
-        <!--Başlık-->
+        <!-- Başlık -->
         <TextView
             android:id="@+id/tv_shop_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Alışveriş Listesi"
+            android:text="@string/shop_list_title"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -26,8 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
-        <!--Evdeki temel Malzemeler-->
+        <!-- Evdeki Temel Malzemeler CardView -->
         <androidx.cardview.widget.CardView
             android:id="@+id/basic_materials"
             android:layout_width="match_parent"
@@ -36,182 +36,144 @@
             app:layout_constraintTop_toBottomOf="@id/tv_shop_list"
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="24dp"
-            app:cardBackgroundColor="#48595959"
+            app:cardBackgroundColor="@color/card_background"
             app:cardCornerRadius="20dp"
             android:elevation="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingBottom="16dp">
 
                 <ImageView
                     android:id="@+id/imgvw_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_home"
-                    app:tint="#FF5722"
+                    app:tint="@color/primary_orange"
                     android:layout_marginTop="18dp"
-                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginStart="24dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/home_materials_title"/>
+
                 <TextView
                     android:id="@+id/tv_homeList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Evdeki Temel Malzemeler"
+                    android:text="@string/home_materials_title"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:layout_marginTop="24dp"
                     android:layout_marginStart="12dp"
                     app:layout_constraintStart_toEndOf="@id/imgvw_home"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6/6 Stokta"
-                    android:textColor="@color/light_grey"
-                    android:textSize="13sp"
+                    android:text="@string/home_materials_stock_count"
+                    style="@style/SubtitleTextInfoStyle"
                     android:layout_marginTop="25dp"
-                    app:layout_constraintStart_toEndOf="@id/tv_homeList"
+                    android:layout_marginEnd="24dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_message_homelist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bitenleri işaretle listeye eklensin."
-                    android:textSize="14sp"
-                    android:textColor="@color/light_grey"
-                    android:textStyle="bold"
+                    style="@style/SubtitleTextInfoStyle"
+                    android:text="@string/home_materials_message"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgvw_home"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="12dp"/>
 
+                <!-- Checkbox'lar -->
                 <CheckBox
                     android:id="@+id/cb_salt"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Tuz"
-                    android:background="@drawable/bg_square_black"
+                    style="@style/LarderCheckboxStyle"
+                    android:text="@string/ingredient_salt"
                     app:layout_constraintTop_toBottomOf="@id/tv_message_homelist"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginStart="24dp" />
+
                 <CheckBox
                     android:id="@+id/cb_black_pepper"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Karabiber"
-                    android:background="@drawable/bg_square_black"
+                    style="@style/LarderCheckboxStyle"
+                    android:text="@string/ingredient_black_pepper"
                     app:layout_constraintTop_toBottomOf="@id/tv_message_homelist"
                     app:layout_constraintStart_toEndOf="@id/cb_salt"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginStart="12dp" />
+
                 <CheckBox
                     android:id="@+id/cb_olive_oil"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="ZeytinYağı"
-                    android:background="@drawable/bg_square_black"
+                    style="@style/LarderCheckboxStyle"
+                    android:text="@string/ingredient_olive_oil"
                     app:layout_constraintTop_toBottomOf="@id/cb_salt"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginStart="24dp" />
+
                 <CheckBox
                     android:id="@+id/cb_flour"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Un"
-                    android:background="@drawable/bg_square_black"
+                    style="@style/LarderCheckboxStyle"
+                    android:text="@string/ingredient_flour"
                     app:layout_constraintTop_toBottomOf="@id/cb_black_pepper"
                     app:layout_constraintStart_toEndOf="@id/cb_salt"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginStart="12dp" />
+
                 <CheckBox
                     android:id="@+id/cb_rice"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Pirinç"
-                    android:background="@drawable/bg_square_black"
+                    style="@style/LarderCheckboxStyle"
+                    android:text="@string/ingredient_rice"
                     app:layout_constraintTop_toBottomOf="@id/cb_olive_oil"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginStart="24dp" />
+
                 <CheckBox
                     android:id="@+id/cb_sugar"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Şeker"
-                    android:background="@drawable/bg_square_black"
+                    style="@style/LarderCheckboxStyle"
+                    android:text="@string/ingredient_sugar"
                     app:layout_constraintTop_toBottomOf="@id/cb_flour"
                     app:layout_constraintStart_toEndOf="@id/cb_salt"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="12dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@color/white"
-                    />
+                    android:layout_marginStart="12dp" />
 
                 <ImageView
                     android:id="@+id/edit_larder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_edit"
-                    app:tint="#FF5722"
+                    app:tint="@color/primary_orange"
                     android:layout_marginTop="18dp"
-                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginStart="24dp"
                     app:layout_constraintTop_toBottomOf="@id/cb_rice"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="12dp"/>
+                    android:contentDescription="@string/edit_larder_list"/>
+
                 <TextView
                     android:id="@+id/tv_edit_larger"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kiler listeni düzenle"
-                    android:textColor="#FF5722"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginHorizontal="10dp"
+                    android:text="@string/edit_larder_list"
+                    android:textColor="@color/primary_orange"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
                     app:layout_constraintTop_toBottomOf="@id/cb_rice"
-                    app:layout_constraintStart_toEndOf="@id/edit_larder"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="12dp"/>
-
-
+                    app:layout_constraintStart_toEndOf="@id/edit_larder"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </androidx.cardview.widget.CardView>
 
-
-        <!--Kategoriler-->
-
+        <!-- Kategoriler RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_category_items"
             android:layout_width="match_parent"
@@ -223,55 +185,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
-
-
-
-
-
-
-        
-
-        
-        <!--Yeni kategori ekleme girişi-->
-
-        <LinearLayout
+        <!-- Yeni Kategori Ekleme Butonu -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_new_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:text="@string/btn_add_new_product"
+            app:icon="@drawable/ic_plus_circle"
+            app:iconTint="@color/primary_orange"
+            app:iconGravity="textStart"
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_dashed_outline"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_category_items"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="#484C4C4C"
-            android:layout_marginTop="12dp">
-            <!--yeni kategori ekleme Butonu-->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_new_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Yeni Kategori Ekle"
-                app:icon="@drawable/ic_plus_circle"
-                app:iconTint="#FF5722"
-                app:iconGravity="textStart"
-                app:backgroundTint="@null"
-                android:background="@drawable/bg_dashed_outline"
-                android:textColor="@color/white"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_category_items"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-
-        </LinearLayout>
-
-
-
-
-
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </ScrollView>
