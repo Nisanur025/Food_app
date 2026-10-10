@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
 
         <LinearLayout
             android:id="@+id/header_allRecipes"
@@ -24,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tüm Tarifler"
+                android:text="@string/all_recipes_title"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginStart="24dp"
@@ -34,13 +35,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="128 Tarif"
+                android:text="@string/all_recipes_count"
                 android:textSize="16sp"
-                android:textColor="#5A5A5A"
+                android:textColor="@color/text_secondary"
                 android:layout_marginTop="2dp"
-                android:layout_marginRight="24dp"
-                android:gravity="right"
-                />
+                android:layout_marginEnd="24dp"
+                android:gravity="end" />
         </LinearLayout>
 
         <EditText
@@ -55,10 +55,11 @@
             app:layout_constraintTop_toBottomOf="@id/header_allRecipes"
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="24dp"
-            android:hint="Tarif, malzeme ara..."
+            android:hint="@string/search_hint"
             android:textColorHint="@color/light_grey"
             android:textColor="@color/white"
-            />
+            android:autofillHints="name"
+            android:inputType="text" />
 
         <HorizontalScrollView
             android:id="@+id/horizontal_bar"
@@ -69,12 +70,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
-            android:scrollbarSize="0dp">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/filter_btn"
                     android:layout_width="35dp"
@@ -82,57 +84,52 @@
                     android:src="@drawable/ic_filter"
                     app:tint="@color/black"
                     android:padding="6dp"
-                    android:drawableTint="@color/black"
                     android:background="@drawable/bg_filter"
                     android:layout_marginEnd="12dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/filter_all" />
 
+                <!-- Aktif Buton (Tümü) -->
                 <Button
+                    android:id="@+id/FilterAllBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="Tümü"
+                    android:text="@string/filter_all"
                     app:backgroundTint="@null"
                     android:background="@drawable/bg_today_menu"
                     android:layout_marginEnd="12dp"
                     android:textStyle="bold"
-                    android:textColor="#F3856A"/>
+                    android:textColor="@color/active_pink" />
+
+                <!--Filtre Butonları-->
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="Kahvaltı"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_square_black"
-                    android:layout_marginEnd="12dp"
-                    />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="Ana Yemek"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_square_black"
-                    android:layout_marginEnd="12dp"
-                    />
+                    android:id="@+id/FilterBreakFastBtn"
+                    style="@style/FilterButtonStyle"
+                    android:text="@string/filter_breakfast" />
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="Tatlı"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_square_black"/>
+                    android:id="@+id/FilterMainDishBtn"
+                    style="@style/FilterButtonStyle"
+                    android:text="@string/filter_main_dish" />
+
+                <Button
+                    android:id="@+id/FilterDessertBtn"
+                    style="@style/FilterButtonStyle"
+                    android:text="@string/filter_dessert"
+                    android:layout_marginEnd="0dp" />
             </LinearLayout>
-
-
 
         </HorizontalScrollView>
 
         <FrameLayout
             android:id="@+id/frame_recipes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/horizontal_bar"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewRecipes"
                 android:layout_width="match_parent"
@@ -140,15 +137,11 @@
                 android:clipToPadding="false"
                 android:paddingHorizontal="8dp"
                 android:paddingTop="8dp"
-                tools:listitem="@layout/rv_item_recipe"
-               />
+                tools:listitem="@layout/rv_item_recipe" />
         </FrameLayout>
-
 
         <!--TODO: FAB Yukarı çıkma-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </ScrollView>

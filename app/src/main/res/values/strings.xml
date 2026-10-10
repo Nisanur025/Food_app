@@ -23,4 +23,15 @@
     <string name="edit_larder_list">Kiler listeni düzenle</string>
     <string name="btn_add_new_product">Yeni Ürün Ekle</string>
 
+    <!-- All Recipes Fragment Strings -->
+    <string name="all_recipes_title">Tüm Tarifler</string>
+    <string name="all_recipes_count">128 Tarif</string>
+    <string name="search_hint">Tarif, malzeme ara...</string>
+
+    <!--  All Recipes Fragment Filter Categories -->
+    <string name="filter_all">Tümü</string>
+    <string name="filter_breakfast">Kahvaltı</string>
+    <string name="filter_main_dish">Ana Yemek</string>
+    <string name="filter_dessert">Tatlı</string>
+
 </resources>
